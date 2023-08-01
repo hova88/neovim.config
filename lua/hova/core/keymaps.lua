@@ -25,6 +25,14 @@ keymap.set("n", "<leader>-", "<C-x>") -- decrement
 keymap.set("n", "<leader>p", '"0p')  
 keymap.set("n", "<leader>P", '"0P') 
 
+-- separate to new line
+keymap.set("n", "z", "a<CR><ESC>")
+
+-- quick save and quit
+keymap.set("n", "<leader>w", ":w<CR>") 
+keymap.set("n", "<leader>q", ":q<CR>") 
+keymap.set("n", "<leader>wq", ":wq<CR>") 
+
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
