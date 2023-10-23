@@ -2,6 +2,8 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
+local api = vim.api -- for conciseness
+
 
 ---------------------
 -- General Keymaps

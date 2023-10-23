@@ -50,9 +50,11 @@ lspconfig["pylsp"].setup({
 	on_attach = on_attach,
 	settings = {
 		pylsp = {
+      configurationSources = { "flake8" },
 			plugins = {
 				pylint = { enabled = false, executable = "pylint" },
-				pyflakes = { enabled = false },
+        flake8 = { enabled = true, executable = "flake8", maxLineLength = 150},
+				pyflakes = { enabled = true },
 				pycodestyle = { enabled = false },
 				jedi_completion = { fuzzy = true },
 				pyls_isort = { enabled = true },
