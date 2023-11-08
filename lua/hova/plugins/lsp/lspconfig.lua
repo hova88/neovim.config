@@ -10,7 +10,8 @@ if not cmp_nvim_lsp_status then
 	return
 end
 
-local keymap = vim.keymap -- for conciseness
+-- for conciseness
+local keymap = vim.keymap
 
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
@@ -18,7 +19,7 @@ local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	-- set keybinds
-  keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+  keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
   keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- got to declaration
   keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- see definition and make edits in window
   keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- go to implementation
@@ -37,7 +38,6 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Change the Diagnostic symbols in the sign column (gutter)
--- (not in youtube nvim video)
 local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
@@ -69,13 +69,26 @@ lspconfig["pylsp"].setup({
 		pylsp = {
       configurationSources = { "flake8" },
 			plugins = {
-				pylint = { enabled = false, executable = "pylint" },
-        flake8 = { enabled = true, executable = "flake8", maxLineLength = 150},
-				pyflakes = { enabled = true },
-				pycodestyle = { enabled = false },
-				jedi_completion = { fuzzy = true },
-				pyls_isort = { enabled = true },
-				pylsp_mypy = { enabled = true },
+        -- formatter options
+        black = { enabled = true },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
+        -- linter options, only lint error messages
+        pylint = { enabled = false, executable = "pylint" ,},
+        ruff = { enabled = false },
+        pyflakes = { enabled = true, executable = "pyflakes", maxLineLength = 165, selectionRange = E},
+        pycodestyle = { enabled = false },
+        -- type checker
+        pylsp_mypy = {
+          enabled = true,
+          overrides = { "--python-executable", py_path, true },
+          report_progress = true,
+          live_mode = false
+        },
+        -- auto-complete options
+        jedi_completion = { fuzzy = false },
+        -- import sorter
+        isort = { enabled = true },
 			},
 		},
 	},
