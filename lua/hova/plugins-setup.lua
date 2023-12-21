@@ -110,6 +110,24 @@ return packer.startup(function(use)
   -- vim colorscheme
   use("folke/tokyonight.nvim")
 
+  -- indent blankline
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      vim.g.indent_blankline_enabled = 1
+      vim.g.indent_blankline_char_highlight_list = {'IndentBlanklineChar'}
+      vim.api.nvim_exec([[ hi IndentBlanklineChar guifg=blue ctermfg=blue ]], false)
+    end
+  }
+  
+  -- install without yarn or npm
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
   if packer_bootstrap then
     require("packer").sync()
   end

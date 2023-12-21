@@ -119,6 +119,12 @@ _G.packer_plugins = {
     path = "/home/hova/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["indent-blankline.nvim"] = {
+    config = { "\27LJ\2\nﬁ\1\0\0\4\0\b\0\0156\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0005\1\4\0=\1\3\0006\0\0\0009\0\5\0009\0\6\0'\2\a\0+\3\1\0B\0\3\1K\0\1\0005 hi IndentBlanklineChar guifg=blue ctermfg=blue \14nvim_exec\bapi\1\2\0\0\24IndentBlanklineChar)indent_blankline_char_highlight_list\29indent_blankline_enabled\6g\bvim\0" },
+    loaded = true,
+    path = "/home/hova/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/home/hova/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -128,6 +134,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/hova/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/hova/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -264,6 +275,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+try_loadstring("\27LJ\2\nﬁ\1\0\0\4\0\b\0\0156\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0005\1\4\0=\1\3\0006\0\0\0009\0\5\0009\0\6\0'\2\a\0+\3\1\0B\0\3\1K\0\1\0005 hi IndentBlanklineChar guifg=blue ctermfg=blue \14nvim_exec\bapi\1\2\0\0\24IndentBlanklineChar)indent_blankline_char_highlight_list\29indent_blankline_enabled\6g\bvim\0", "config", "indent-blankline.nvim")
+time([[Config for indent-blankline.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
