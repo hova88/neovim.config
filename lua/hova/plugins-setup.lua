@@ -104,8 +104,6 @@ return packer.startup(function(use)
   -- git integration
   use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
-  -- git diff 
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- vim colorscheme
   use("folke/tokyonight.nvim")
@@ -124,9 +122,9 @@ return packer.startup(function(use)
   use({
       "iamcco/markdown-preview.nvim",
       run = function() vim.fn["mkdp#util#install"]() end,
+      setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" },
   })
 
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   if packer_bootstrap then
     require("packer").sync()

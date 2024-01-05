@@ -66,6 +66,26 @@ keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git co
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
+-- gitsigns
+   -- Navigation
+keymap.set('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+keymap.set('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
+    -- Actions
+keymap.set('n', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+keymap.set('v', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+keymap.set('n', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+keymap.set('v', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+keymap.set('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
+keymap.set('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+keymap.set('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
+keymap.set('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
+keymap.set('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+keymap.set('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+keymap.set('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
+keymap.set('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+keymap.set('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
+
 -- nvim-ufo
 vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
